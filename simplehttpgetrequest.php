@@ -1,11 +1,14 @@
 <?php
 
-/*
+/**
  * A simple HTTP GET request wrapper class on cURL for
  * parameterless RESTful APIs that return JSON.
  *
+ * This script is based off of the work of Leonid Svyatov <leonid@svyatov.ru>
+ * located at https://github.com/svyatov/CurlWrapper
+ *
  * @author Michael Conroy
-*/
+ */
 
 class SimpleHttpGetRequest {
 
