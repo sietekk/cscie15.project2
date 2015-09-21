@@ -1,3 +1,4 @@
+<?php require 'passgen.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -93,15 +94,41 @@
       </nav>
       <!-- Header -->
       <div class="page-header">
-        <h1>Michael Conroy <small>Dynamic Web Applications Portfolio</small></h1>
+        <h1>Project 2 <small>xkcd Style Password Generator</small></h1>
       </div>
-      <!-- About Me Section -->
+      <div id="pass-gen-container">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Generated Password -->
+            <div class="panel panel-info panel-padding">
+              <div class="panel-heading">
+                <h4 class="panel-title">Generated Password</h4>
+              </div>
+              <div class="panel-body">
+                <p>Passwork placeholder....</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- Password Generation Form -->
+            <div class="panel panel-info panel-padding">
+              <div class="panel-heading">
+                <h4 class="panel-title">Generated Password</h4>
+              </div>
+              <div class="panel-body">
+                <p>Form placeholder....</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Password Generator Information -->
       <div class="panel panel-info panel-padding">
         <div class="panel-heading">
-          <h4 class="panel-title">Project 2 Placeholder</h4>
+          <h4 class="panel-title">Background</h4>
         </div>
         <div class="panel-body">
-          <p>This page is a placeholder for future projects in CSCI E-15 Dynamic Web Applications for the Fall 2015 semester at the Harvard Extension School.</p>
+          <p>Background placeholder....</p>
         </div>
       </div>
     </div>
