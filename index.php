@@ -26,6 +26,9 @@
       .navbar-collapse.in {
         overflow-y: visible;
       }
+      .img-responsive {
+        margin: auto;
+      }
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -99,24 +102,24 @@
       <div id="pass-gen-container">
         <div class="row">
           <div class="col-md-6">
+            <!-- Password Generation Form -->
+            <div class="panel panel-info panel-padding">
+              <div class="panel-heading">
+                <h4 class="panel-title">Configure Password</h4>
+              </div>
+              <div class="panel-body">
+                <p>Form placeholder....</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
             <!-- Generated Password -->
             <div class="panel panel-info panel-padding">
               <div class="panel-heading">
                 <h4 class="panel-title">Generated Password</h4>
               </div>
               <div class="panel-body">
-                <p>Passwork placeholder....</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <!-- Password Generation Form -->
-            <div class="panel panel-info panel-padding">
-              <div class="panel-heading">
-                <h4 class="panel-title">Generated Password</h4>
-              </div>
-              <div class="panel-body">
-                <p>Form placeholder....</p>
+                <p>Password placeholder....</p>
               </div>
             </div>
           </div>
@@ -128,7 +131,15 @@
           <h4 class="panel-title">Background</h4>
         </div>
         <div class="panel-body">
-          <p>Background placeholder....</p>
+          <p>This xkcd style password generator will create a password, which is much easier to remember and much harder to hack
+             than traditional passwords. The number of words, type of delimeter, and symbols may be specified. Random words are
+             pulled from the <a href="http://randomword.setgetgo.com/" target="_blank">Random Word API</a>. The API interface
+             is built on a modified server side PHP script based off of Leonid Svyatov's
+             <a href="https://github.com/svyatov/CurlWrapper" target="_blank">CurlWrapper script</a>. Please refer to the xkcd
+             webcomic below for more information.</p>
+          <a href="http://xkcd.com/936/" target="_blank">
+            <img class="img-responsive" src="http://imgs.xkcd.com/comics/password_strength.png" alt="xkcd password comic">
+          </a>
         </div>
       </div>
     </div>
