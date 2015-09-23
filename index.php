@@ -29,6 +29,10 @@
       .img-responsive {
         margin: auto;
       }
+      .pw-presentation {
+        text-align: center;
+        overflow-wrap: break-word;
+      }
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -108,7 +112,58 @@
                 <h4 class="panel-title">Configure Password</h4>
               </div>
               <div class="panel-body">
-                <p>Form placeholder....</p>
+                <div class="container">
+                  <form id="passGenForm" class="form-horizontal" action="index.php" method="GET" autocomplete="off">
+                    <div class="form-group">
+                      <label for="inputNumberOfWords" class="col-sm-8 control-label">Number of Words</label>
+                      <div class="col-sm-4">
+                        <input type="number" min="1" max="10" class="form-control" name="numberOfWords" id="inputNumberOfWords" placeholder="1-10">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputDelimeterType" class="col-sm-8 control-label">Delimeter</label>
+                      <div class="col-sm-4">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="delimeterChoice1" id="inputDelimeterType1">
+                            Space
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="delimeterChoice2" id="inputDelimeterType2">
+                            Dash
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputRandomNumberChoice" class="col-sm-8 control-label">Append Random Number</label>
+                      <div class="col-sm-4">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="delimeterChoice" id="inputRandomNumberChoice">
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputRandomSpecialCharacterChoice" class="col-sm-8 control-label">Append Random Special Character</label>
+                      <div class="col-sm-4">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="delimeterChoice" id="inputRandomSpecialCharacterChoice">
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-8 col-sm-4">
+                        <button type="submit" class="btn btn-default">Generate</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -119,7 +174,12 @@
                 <h4 class="panel-title">Generated Password</h4>
               </div>
               <div class="panel-body">
-                <p>Password placeholder....</p>
+                  <?php
+                    $test = new PasswordGenerator(array('show_number' => true, 'show_delimeter' => true, 'show_special_char' => true));
+                    $test->setWordApiURL('http://randomword.setgetgo.com/get.php');
+                    $password = $test->generate();
+                    echo '<p class="pw-presentation lead">'.$password.'</p>';
+                  ?>
               </div>
             </div>
           </div>
@@ -132,9 +192,10 @@
         </div>
         <div class="panel-body">
           <p>This xkcd style password generator will create a password, which is much easier to remember and much harder to hack
-             than traditional passwords. The number of words, type of delimeter, and symbols may be specified. Random words are
-             pulled from the <a href="http://randomword.setgetgo.com/" target="_blank">Random Word API</a>. The API interface
-             is built on a modified server side PHP script based off of Leonid Svyatov's
+             than traditional passwords. The number of words, the type of delimeter, adding a random number, and adding a random
+             symbol may be specified. Random words are pulled from the
+             <a href="http://randomword.setgetgo.com/" target="_blank">Random Word API</a>. The API interface is built on a
+             modified server side PHP script based off of Leonid Svyatov's
              <a href="https://github.com/svyatov/CurlWrapper" target="_blank">CurlWrapper script</a>. Please refer to the xkcd
              webcomic below for more information.</p>
           <a href="http://xkcd.com/936/" target="_blank">
@@ -145,6 +206,8 @@
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- jQuery Validation -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>

@@ -3,44 +3,50 @@ require 'simplehttpgetrequest.php';
 
 class PasswordGenerator {
 
-    protected const $__minNumberOfWords = 1;
-    protected const $__maxNumberOfWords = 10;
-    protected const $__specialChars = array('!', '@', '#', '$', '%', '^', '&', '*', '(', ')');
-    protected const $__delimeters = array(' ', '-', ',', '/', '_');
+    const __minNumberOfWords = 1;
+    const __maxNumberOfWords = 10;
+    const __defaultNumberOfWords = 3;
+    const __specialChars = array('!', '@', '#', '$', '%', '^', '&', '*', '(', ')');
+    const __delimeters = array(' ', '-');
 
     protected $__wordApiURL;
 
-    protected $__numberOfWords = 3;
+    protected $__numberOfWords;
     protected $__delimeter;
     protected $__showNumber = false;
     protected $__showSpecialChar = false;    
     protected $__wordList = array();
 
-    public function __construct($params) {
-        $this->__numberOfWords = isset($params['number_of_words']) && $params['number_of_words'];
+    public function __construct($params = null) {
+        $this->__numberOfWords = (isset($params['number_of_words']) && $params['number_of_words']) ? $params['number_of_words'] : self::__defaultNumberOfWords;
         $this->__showDelimeter = isset($params['show_delimeter']) && $params['show_delimeter'];
         $this->__showNumber = isset($params['show_number']) && $params['show_number'];
         $this->__showSpecialChar = isset($params['show_special_char']) && $params['show_special_char'];
-        $this->__delimeter = $this->__delimeters[array_rand($this->__delimeters)];
+        $this->__delimeter = self::__delimeters[array_rand(self::__delimeters)];
     }
 
     public function generate() {
-        if (!$this->wordApiURL) {
-            throw new PasswordGeneratorException('No URL specified. Please specify a valid URL with setWordApiURL.');
+        if (!$this->__wordApiURL) {
+            throw new PasswordGeneratorException('No URL specified. Please specify a valid URL with setWordApiURL().');
         }
 
-        $wordApiInterface = new SimpleHttpGetRequest();
-        $wordApiInterface->setURL($this->__wordApiURL);
-
-        for ($i = 0; $i <= ($this->__numberOfWords-1); $i++) {
-            $this->__wordList[] = $wordApiInferface->get();
-            $this->__wordList[] = $this->__delimeter;
+        for ($i = self::__minNumberOfWords; $i <= $this->__numberOfWords; $i++) {
+            $wordApiInterface = new SimpleHttpGetRequest();
+            $wordApiInterface->setURL($this->__wordApiURL);
+            $data = trim($wordApiInterface->get());
+            $status = $wordApiInterface->getStatus();
+            
+            if ($status == '200') {
+                $this->__wordList[] = $data;
+            } else {
+                throw new PasswordGeneratorException('Data not received! Status not 200.');
+            }
         }
 
-        $this->__wordList[] = $this->__showNumber && rand(0, 100);
-        $this->__wordList[] = $this->__showSpecialChar && $this->__specialChars[array_rand($this->__specialChars)];
+        $this->__wordList[] = $this->__showNumber ? mt_rand(0, 100) : '';
+        $this->__wordList[] = $this->__showSpecialChar ? self::__specialChars[array_rand(self::__specialChars)] : '';
 
-        return implode($this->__wordList);
+        return implode($this->__delimeter, $this->__wordList);
     }
 
     public function setWordApiURL($url = null) {
@@ -49,6 +55,18 @@ class PasswordGenerator {
         }
 
         $this->__wordApiURL = $url;
+    }
+
+    public function validateNumberOfWords($number = null) {
+        if ($number === null) {
+            throw new PasswordGeneratorException('No value specified. Please specify a valid number.');
+        }
+
+        if (!is_int($number) || $number < self::__minNumberOfWords || $number > self::__maxNumberOfWords) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 
