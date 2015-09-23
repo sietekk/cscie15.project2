@@ -7,7 +7,7 @@ $(document).ready(function() {
                 max: 10
             }
         },
-        wrapper: "span",
+        wrapper: "div",
         errorPlacement: function(error, element) {
             error.addClass('alert alert-danger');
             error.appendTo("#errorElement");

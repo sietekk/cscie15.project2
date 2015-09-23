@@ -91,15 +91,17 @@
                 <div class="container">
                   <form id="passGenForm" class="form-horizontal" action="index.php" method="GET" autocomplete="off">
                     <div class="form-group">
-                      <label for="inputNumberOfWords" class="col-sm-6 control-label">Number of Words</label>
-                      <div class="col-sm-6">
+                      <label for="inputNumberOfWords" class="col-md-6 control-label">Number of Words</label>
+                      <div class="col-md-6">
                         <input type="number" min="1" max="10" class="form-control" name="numberOfWords" id="inputNumberOfWords" placeholder="1-10">
                       </div>
                     </div>
-                    <div id="errorElement" class="col-sm-12i error-div-padding"></div>
+                    <div class="row">
+                      <div id="errorElement" class="col-md-12"></div>
+                    </div>
                     <div class="form-group">
-                      <label for="inputDelimeterType" class="col-sm-6 control-label">Delimeter</label>
-                      <div class="col-sm-6">
+                      <label for="inputDelimeterType" class="col-md-6 control-label">Delimeter</label>
+                      <div class="col-md-6">
                         <div class="radio">
                           <label>
                             <input type="radio" name="delimeterChoice1" id="inputDelimeterType1">
@@ -115,8 +117,8 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputRandomNumberChoice" class="col-sm-6 control-label">Append Random Number</label>
-                      <div class="col-sm-6">
+                      <label for="inputRandomNumberChoice" class="col-md-6 control-label">Append Random Number</label>
+                      <div class="col-md-6">
                         <div class="checkbox">
                           <label>
                             <input type="checkbox" name="delimeterChoice" id="inputRandomNumberChoice">
@@ -125,8 +127,8 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputRandomSpecialCharacterChoice" class="col-sm-6 control-label">Append Random Special Character</label>
-                      <div class="col-sm-6">
+                      <label for="inputRandomSpecialCharacterChoice" class="col-md-6 control-label">Append Random Special Character</label>
+                      <div class="col-md-6">
                         <div class="checkbox">
                           <label>
                             <input type="checkbox" name="delimeterChoice" id="inputRandomSpecialCharacterChoice">
@@ -135,7 +137,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="col-sm-offset-6 col-sm-6">
+                      <div class="col-md-offset-6 col-md-6">
                         <button type="submit" class="btn btn-default">Generate</button>
                       </div>
                     </div>
