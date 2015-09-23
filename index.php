@@ -9,35 +9,7 @@
     <title>Project 2</title>
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <style>
-      .container {
-        margin: auto;
-        width: 80%;
-      }
-      .panel-padding {
-        margin: 10px auto 10px auto;
-      }
-      .nav-btn-width {
-        min-width: 100%;
-      }
-      .float-glyph-right {
-        float: right;
-      }
-      .navbar-collapse.in {
-        overflow-y: visible;
-      }
-      .img-responsive {
-        margin: auto;
-      }
-      .pw-presentation {
-        text-align: center;
-        overflow-wrap: break-word;
-      }
-      .alert {
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -124,8 +96,7 @@
                         <input type="number" min="1" max="10" class="form-control" name="numberOfWords" id="inputNumberOfWords" placeholder="1-10">
                       </div>
                     </div>
-                    <div id="errorElement" class="col-sm-12">
-                    </div>
+                    <div id="errorElement" class="col-sm-12i error-div-padding"></div>
                     <div class="form-group">
                       <label for="inputDelimeterType" class="col-sm-6 control-label">Delimeter</label>
                       <div class="col-sm-6">

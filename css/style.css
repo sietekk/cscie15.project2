@@ -1,0 +1,28 @@
+.container {
+  margin: auto;
+  width: 80%;
+}
+.panel-padding {
+  margin: 10px auto 10px auto;
+}
+.nav-btn-width {
+  min-width: 100%;
+}
+.float-glyph-right {
+  float: right;
+}
+.navbar-collapse.in {
+  overflow-y: visible;
+}
+.img-responsive {
+  margin: auto;
+}
+.pw-presentation {
+  text-align: center;
+  overflow-wrap: break-word;
+}
+.error-div-padding {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
