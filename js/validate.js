@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
     var validator = $("#passGenForm").validate({
-        debug: true,
         rules: {
             inputNumberOfWords: {
                 required: true,
