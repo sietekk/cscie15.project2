@@ -28,3 +28,6 @@
   overflow-wrap: break-word;
 }
 
+.btn-width {
+  width: 100%;
+}

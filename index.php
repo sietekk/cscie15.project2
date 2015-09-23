@@ -90,10 +90,10 @@
               <div class="panel-body">
                 <div class="container">
                   <form id="passGenForm" class="form-horizontal" action="index.php" method="GET" autocomplete="off">
-                    <div class="form-group">
+                    <div id="numberOfWordsFormGroup" class="form-group">
                       <label for="inputNumberOfWords" class="col-md-6 control-label">Number of Words</label>
                       <div class="col-md-6">
-                        <input type="number" min="1" max="10" class="form-control" name="numberOfWords" id="inputNumberOfWords" placeholder="1-10">
+                        <input type="number" min="1" max="10" class="form-control" name="numberOfWords" id="inputNumberOfWords" placeholder="1-10" required>
                       </div>
                     </div>
                     <div class="row">
@@ -104,13 +104,13 @@
                       <div class="col-md-6">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="delimeterChoice1" id="inputDelimeterType1">
+                            <input type="radio" name="delimeterChoice" value="space" id="inputDelimeterType">
                             Space
                           </label>
                         </div>
                         <div class="radio">
                           <label>
-                            <input type="radio" name="delimeterChoice2" id="inputDelimeterType2">
+                            <input type="radio" name="delimeterChoice" value="dash" id="inputDelimeterType">
                             Dash
                           </label>
                         </div>
@@ -137,8 +137,8 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="col-md-offset-6 col-md-6">
-                        <button type="submit" class="btn btn-default">Generate</button>
+                      <div class="col-md-12">
+                        <button type="submit" class="btn btn-info btn-width">Generate</button>
                       </div>
                     </div>
                   </form>
