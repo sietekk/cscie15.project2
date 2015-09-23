@@ -33,6 +33,10 @@
         text-align: center;
         overflow-wrap: break-word;
       }
+      .alert {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -115,14 +119,16 @@
                 <div class="container">
                   <form id="passGenForm" class="form-horizontal" action="index.php" method="GET" autocomplete="off">
                     <div class="form-group">
-                      <label for="inputNumberOfWords" class="col-sm-8 control-label">Number of Words</label>
-                      <div class="col-sm-4">
+                      <label for="inputNumberOfWords" class="col-sm-6 control-label">Number of Words</label>
+                      <div class="col-sm-6">
                         <input type="number" min="1" max="10" class="form-control" name="numberOfWords" id="inputNumberOfWords" placeholder="1-10">
                       </div>
                     </div>
+                    <div id="errorElement" class="col-sm-12">
+                    </div>
                     <div class="form-group">
-                      <label for="inputDelimeterType" class="col-sm-8 control-label">Delimeter</label>
-                      <div class="col-sm-4">
+                      <label for="inputDelimeterType" class="col-sm-6 control-label">Delimeter</label>
+                      <div class="col-sm-6">
                         <div class="radio">
                           <label>
                             <input type="radio" name="delimeterChoice1" id="inputDelimeterType1">
@@ -138,8 +144,8 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputRandomNumberChoice" class="col-sm-8 control-label">Append Random Number</label>
-                      <div class="col-sm-4">
+                      <label for="inputRandomNumberChoice" class="col-sm-6 control-label">Append Random Number</label>
+                      <div class="col-sm-6">
                         <div class="checkbox">
                           <label>
                             <input type="checkbox" name="delimeterChoice" id="inputRandomNumberChoice">
@@ -148,8 +154,8 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputRandomSpecialCharacterChoice" class="col-sm-8 control-label">Append Random Special Character</label>
-                      <div class="col-sm-4">
+                      <label for="inputRandomSpecialCharacterChoice" class="col-sm-6 control-label">Append Random Special Character</label>
+                      <div class="col-sm-6">
                         <div class="checkbox">
                           <label>
                             <input type="checkbox" name="delimeterChoice" id="inputRandomSpecialCharacterChoice">
@@ -158,7 +164,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="col-sm-offset-8 col-sm-4">
+                      <div class="col-sm-offset-6 col-sm-6">
                         <button type="submit" class="btn btn-default">Generate</button>
                       </div>
                     </div>
@@ -208,6 +214,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- jQuery Validation -->
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <!-- Validation JS Code -->
+    <script src="js/validate.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
