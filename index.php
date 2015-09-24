@@ -1,4 +1,31 @@
-<?php require 'passgen.php'; ?>
+<?php
+
+require 'passgen.php';
+
+define('__apiURL__', 'http://randomword.setgetgo.com/get.php');
+
+$testAPI = function($apiURL) {
+    $api = new SimpleHttpGetRequest();
+    $api->setURL($apiURL);
+    return ($api->get() && ($api->getStatus() === 200));
+};
+
+$passGen;
+$passWord;
+$showApiError;
+if ($testAPI(__apiURL__)) {
+    $showApiError = false;
+    $passGen = new PasswordGenerator($_GET);
+    $passGen->setWordApiURL(__apiURL__);
+    $passWord = $passGen->generate(); 
+} else {
+    $showApiError = true;
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -93,7 +120,7 @@
                     <div id="numberOfWordsFormGroup" class="form-group">
                       <label for="inputNumberOfWords" class="col-md-6 control-label">Number of Words</label>
                       <div class="col-md-6">
-                        <input type="number" min="1" max="10" class="form-control" name="numberOfWords" id="inputNumberOfWords" placeholder="1-10" required>
+                        <input type="number" min="1" max="10" class="form-control" name="number_of_words" id="inputNumberOfWords" placeholder="1-10" required>
                       </div>
                     </div>
                     <div class="row">
@@ -104,13 +131,13 @@
                       <div class="col-md-6">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="delimeterChoice" value="space" id="inputDelimeterType">
+                            <input type="radio" name="delimeter_choice" value="space" id="inputDelimeterType">
                             Space
                           </label>
                         </div>
                         <div class="radio">
                           <label>
-                            <input type="radio" name="delimeterChoice" value="dash" id="inputDelimeterType">
+                            <input type="radio" name="delimeter_choice" value="dash" id="inputDelimeterType">
                             Dash
                           </label>
                         </div>
@@ -121,7 +148,7 @@
                       <div class="col-md-6">
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox" name="delimeterChoice" id="inputRandomNumberChoice">
+                            <input type="checkbox" name="random_number" id="inputRandomNumberChoice">
                           </label>
                         </div>
                       </div>
@@ -131,14 +158,14 @@
                       <div class="col-md-6">
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox" name="delimeterChoice" id="inputRandomSpecialCharacterChoice">
+                            <input type="checkbox" name="random_special_character" id="inputRandomSpecialCharacterChoice">
                           </label>
                         </div>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-md-12">
-                        <button type="submit" class="btn btn-info btn-width">Generate</button>
+                        <button type="submit" class="btn btn-info btn-width" <?php echo ($showApiError ? 'disabled' : null); ?>>Generate</button>
                       </div>
                     </div>
                   </form>
@@ -148,16 +175,15 @@
           </div>
           <div class="col-md-6">
             <!-- Generated Password -->
-            <div class="panel panel-info panel-padding">
+            <div class="panel <?php echo ($showApiError ? 'panel-danger' : 'panel-info'); ?> panel-padding">
               <div class="panel-heading">
                 <h4 class="panel-title">Generated Password</h4>
               </div>
               <div class="panel-body">
                   <?php
-                    $test = new PasswordGenerator(array('show_number' => true, 'show_delimeter' => true, 'show_special_char' => true));
-                    $test->setWordApiURL('http://randomword.setgetgo.com/get.php');
-                    $password = $test->generate();
-                    echo '<p class="pw-presentation lead">'.$password.'</p>';
+                    echo ($showApiError ?
+                        '<p class="pw-presentation lead">API is currently broken. Please try again later.</p>':
+                        '<p class="pw-presentation lead">'.$passWord.'</p>');
                   ?>
               </div>
             </div>

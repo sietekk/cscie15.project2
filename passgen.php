@@ -18,11 +18,22 @@ class PasswordGenerator {
     protected $__wordList = array();
 
     public function __construct($params = null) {
-        $this->__numberOfWords = (isset($params['number_of_words']) && $params['number_of_words']) ? $params['number_of_words'] : self::__defaultNumberOfWords;
-        $this->__showDelimeter = isset($params['show_delimeter']) && $params['show_delimeter'];
-        $this->__showNumber = isset($params['show_number']) && $params['show_number'];
-        $this->__showSpecialChar = isset($params['show_special_char']) && $params['show_special_char'];
-        $this->__delimeter = self::__delimeters[array_rand(self::__delimeters)];
+        $this->__showNumber = isset($params['random_number']) && $params['random_number'];
+        $this->__showSpecialChar = isset($params['random_special_character']) && $params['random_special_character'];
+
+        if (isset($params['number_of_words']) && $params['number_of_words'] && self::validateNumberOfWords($params['number_of_words'])) {
+            $this->__numberOfWords = $params['number_of_words'];
+        } else {
+            $this->__numberOfWords = self::__defaultNumberOfWords;
+        }
+
+        if (isset($params['delimeter_choice']) && $params['delimeter_choice'] && $params['delimeter_choice'] === 'dash') {
+            $this->__delimeter = '-';
+        } elseif (isset($params['delimeter_choice']) && $params['delimeter_choice'] && $params['delimeter_choice'] === 'space') {
+            $this->__delimeter = ' ';
+        } else {
+            $this->__delimeter = self::__delimeters[array_rand(self::__delimeters)];
+        }
     }
 
     public function generate() {
@@ -36,15 +47,20 @@ class PasswordGenerator {
             $data = trim($wordApiInterface->get());
             $status = $wordApiInterface->getStatus();
             
-            if ($status == '200') {
+            if ($status === 200) {
                 $this->__wordList[] = $data;
             } else {
                 throw new PasswordGeneratorException('Data not received! Status not 200.');
             }
         }
 
-        $this->__wordList[] = $this->__showNumber ? mt_rand(0, 100) : '';
-        $this->__wordList[] = $this->__showSpecialChar ? self::__specialChars[array_rand(self::__specialChars)] : '';
+        if ($this->__showNumber) {
+            $this->__wordList[] = mt_rand(0, 100);
+        }
+
+        if ($this->__showSpecialChar) {
+            $this->__wordList[] = self::__specialChars[array_rand(self::__specialChars)];
+        }
 
         return implode($this->__delimeter, $this->__wordList);
     }
@@ -62,7 +78,9 @@ class PasswordGenerator {
             throw new PasswordGeneratorException('No value specified. Please specify a valid number.');
         }
 
-        if (!is_int($number) || $number < self::__minNumberOfWords || $number > self::__maxNumberOfWords) {
+        $number = (int) $number;
+
+        if ($number < self::__minNumberOfWords || $number > self::__maxNumberOfWords) {
             return false;
         } else {
             return true;
