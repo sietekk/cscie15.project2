@@ -22,9 +22,6 @@ if ($testAPI(__apiURL__)) {
     $showApiError = true;
 }
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
