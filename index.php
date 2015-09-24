@@ -1,6 +1,6 @@
 <?php
 
-require 'passgen.php';
+require './resources/passgen.php';
 
 define('__apiURL__', 'http://randomword.setgetgo.com/get.php');
 
