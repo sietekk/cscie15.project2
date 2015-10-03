@@ -124,7 +124,7 @@ if ($testAPI(__apiURL__)) {
                       <div id="errorElement" class="col-md-12"></div>
                     </div>
                     <div class="form-group">
-                      <label for="inputDelimeterType" class="col-md-6 control-label">Delimeter</label>
+                      <label for="inputDelimeterType" class="col-md-6 control-label">Delimiter</label>
                       <div class="col-md-6">
                         <div class="radio">
                           <label>
@@ -193,9 +193,9 @@ if ($testAPI(__apiURL__)) {
           <h4 class="panel-title">Background</h4>
         </div>
         <div class="panel-body">
-          <p>This xkcd style password generator will create a password, which is much easier to remember and much harder to hack
-             than traditional passwords. The number of words, the type of delimeter, adding a random number, and adding a random
-             symbol may be specified. Random words are pulled from the
+          <p>This xkcd style password generator will create a password, which is much easier to remember and much harder to
+             hack than traditional passwords. The number of words, the type of delimiter (random if not specified), appending
+             of a random number, and appending of a random symbol may be specified. Random words are pulled from the
              <a href="http://randomword.setgetgo.com/" target="_blank">Random Word API</a>. The API interface is built on a
              modified server side PHP script based off of Leonid Svyatov's
              <a href="https://github.com/svyatov/CurlWrapper" target="_blank">CurlWrapper script</a>. Please refer to the xkcd
