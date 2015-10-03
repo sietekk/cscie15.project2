@@ -1,4 +1,4 @@
-# CSCI E-15 Project 2:
+# CSCI E-15 Project 2
 # xkcd Style Password Generator
 
 ## Live URL
