@@ -58,7 +58,7 @@ class PasswordGenerator {
         }
 
         if ($this->__showSpecialChar) {
-            $this->__wordList[] = $this->__specialChars[array_rand($this->::__specialChars)];
+            $this->__wordList[] = $this->__specialChars[array_rand($this->__specialChars)];
         }
 
         return implode($this->__delimeter, $this->__wordList);
