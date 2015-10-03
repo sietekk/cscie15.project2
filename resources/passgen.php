@@ -7,8 +7,8 @@ class PasswordGenerator {
     const __maxNumberOfWords = 10;
     const __defaultNumberOfWords = 3;
 
-    protected __specialChars = array('!', '@', '#', '$', '%', '^', '&', '*', '(', ')');
-    protected __delimeters = array(' ', '-');
+    protected $__specialChars = array('!', '@', '#', '$', '%', '^', '&', '*', '(', ')');
+    protected $__delimiters = array(' ', '-');
     protected $__wordApiURL;
     protected $__numberOfWords;
     protected $__delimeter;
@@ -31,7 +31,7 @@ class PasswordGenerator {
         } elseif (isset($params['delimeter_choice']) && $params['delimeter_choice'] && $params['delimeter_choice'] === 'space') {
             $this->__delimeter = ' ';
         } else {
-            $this->__delimeter = self::__delimeters[array_rand(self::__delimeters)];
+            $this->__delimeter = $this->__delimiters[array_rand($this->__delimiters)];
         }
     }
 
@@ -58,7 +58,7 @@ class PasswordGenerator {
         }
 
         if ($this->__showSpecialChar) {
-            $this->__wordList[] = self::__specialChars[array_rand(self::__specialChars)];
+            $this->__wordList[] = $this->__specialChars[array_rand($this->::__specialChars)];
         }
 
         return implode($this->__delimeter, $this->__wordList);
