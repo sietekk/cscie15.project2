@@ -30,7 +30,7 @@ Random words are pulled from the [Random Word API](http://randomword.setgetgo.co
 The API interface is built on a heavily customized, server side PHP script loosely based off of Leonid Svyatov's [CurlWrapper script](https://github.com/svyatov/CurlWrapper). The interface sends simple GET requests to external APIs, which return simple text responses.
 
 ## Demo
-Not available at this time.
+<http://www.screencast.com/t/OdfnaotT>
 
 ## Details for teaching team
 * No login required.
