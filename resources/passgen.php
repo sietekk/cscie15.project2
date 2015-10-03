@@ -6,11 +6,10 @@ class PasswordGenerator {
     const __minNumberOfWords = 1;
     const __maxNumberOfWords = 10;
     const __defaultNumberOfWords = 3;
-    const __specialChars = array('!', '@', '#', '$', '%', '^', '&', '*', '(', ')');
-    const __delimeters = array(' ', '-');
 
+    protected __specialChars = array('!', '@', '#', '$', '%', '^', '&', '*', '(', ')');
+    protected __delimeters = array(' ', '-');
     protected $__wordApiURL;
-
     protected $__numberOfWords;
     protected $__delimeter;
     protected $__showNumber = false;
